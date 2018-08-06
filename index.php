@@ -1,37 +1,18 @@
 <?php
 
-include_once('includes/connection.php');
-include_once('includes/article.php');
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-$article = new Article;
-$articles = $article->fetch_all();
+session_start();
+
+require_once ('components/Router.php');
+require_once ('components/Database.php');
+
+define('ROOT', dirname(__FILE__)); //defines absolute path to root folder
+define ('INDEX', 'http://localhost/BloghCMS'); //define relative path to root
+define ('TEMPL', 'http://localhost/BloghCMS/template/'); //define relative path to template folder
 
 
-?>
 
-<html>
-<head>
-    <title>Blogh - main page</title>
-    <link rel="stylesheet" href="assets/style.css"/>
-</head>
-
-<body>
-<div class="container">
-    <a href="index.php" id="logo">Blogh</a>
-    <div class="content">
-        <ol>
-            <?php foreach ($articles as $article) { ?>
-                <li><a href="article.php?id=<?php echo $article['article_id']; ?>">
-                        <?php echo $article['article_title']; ?>
-                    </a>
-                    -
-                    <small>
-                        posted <?php echo date('Y-m-d', $article['article_timestamp']); ?>
-                    </small>
-                </li>
-            <?php } ?>
-        </ol>
-    </div>
-</div>
-</body>
-</html>
+$router = new Router();
+$router->run();
