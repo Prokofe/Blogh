@@ -1,29 +1,33 @@
 <?php include_once ROOT . '/views/layouts/header.php'; ?>
 
-<div class="container">
-    <div class="content">
-        <b>User login</b>
-        <hr>
-        <?php if ($result): ?>
-            <p>Successfully logged in. </p>
-        <?php else: ?>
-        <?php if (isset($errors) && is_array($errors)): ?>
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                    <li>- <?php echo $error; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-        <br>
-            <form action="" method="post">
-                Login: <br>
-                <input type="text" size="30" name="login" placeholder="User"/><br><br>
-                Password: <br>
-                <input type="password" size="30" name="password" placeholder="*******"/><br><br>
-                <input type="submit" name="submit" class="btn btn-default" value="Login"/>
-            </form>
-        <?php endif; ?>
+    <div class="row no-gutters">
+        <div class="col-sm-12">
+            <div class="content">
+                <b>User login</b>
+                <hr>
+                <?php if ($result): ?>
+                    <p>Successfully logged in. </p>
+                <?php else: ?>
+                    <?php if (isset($errors) && is_array($errors)): ?>
+                        <?php foreach ($errors as $error): ?>
+                            <div class="alert alert-danger" role="alert"><?php echo $error; ?></div></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label>Login</label>
+                            <input type="text" class="form-control" name="login" placeholder="User">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="*******">
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-secondary">Login</button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
-</div>
-</body>
-</html>
+
+<?php include_once ROOT . '/views/layouts/footer.php'; ?>

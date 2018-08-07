@@ -7,7 +7,7 @@ class Router
 
     public function __construct()
     {
-        $routesPath = './config/routes.php';
+        $routesPath = ROOT.'/config/routes.php';
         $this->routes = include($routesPath);
     }
 
@@ -37,16 +37,17 @@ class Router
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
                 if ($result != null) {
-                    break;
+                    return;
                 }
             }
         }
+        include_once(ROOT.'/views/404.php');
     }
 
     private function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI'])) {
-            $subfolder = include_once ('./config/route_path.php');
+            $subfolder = include_once (ROOT.'/config/route_path.php');
             $uri = preg_replace("/$subfolder/", "", $_SERVER['REQUEST_URI']);
             return trim($uri, '/');
         }

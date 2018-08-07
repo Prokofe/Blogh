@@ -22,12 +22,12 @@ class ArticlesController
 
         if ($id) {
 
-            $article = Article::getArticleByID($id);
-
-            require_once('./views/article/article.php');
+            if ($article = Article::getArticleByID($id)) {
+                require_once('./views/article/article.php');
+                return true;
+            }
+            require_once('./views/404.php');
         }
-
-        return true;
     }
 
     public function actionAdd()
@@ -87,7 +87,34 @@ class ArticlesController
                 $result = Article::deleteArticle($id);
             }
 
-            header('Location: '.INDEX . '/articles/manage');
+            header('Location: ' . INDEX . '/articles/manage');
+        }
+        return true;
+    }
+
+    public function actionEdit($id)
+    {
+        if (User::isAuthor() || User::isAdmin()) {
+            $result = false;
+
+            if ($id) {
+
+                $article = Article::getArticleByID($id);
+                $categories = Category::getAllCategories();
+
+                if (isset($_POST['submit'])) {
+                    $title = $_POST['title'];
+                    $content = $_POST['content'];
+                    $category = $_POST['category'];
+
+                    if (!empty($title) && !empty($content) && !empty($category)) {
+                        $result = Article::editArticle($id, $title, $content, $category);
+                    } else {
+                        $error = 'All field must be filled';
+                    }
+                }
+            }
+            require_once(ROOT . '/views/article/editarticle.php');
         }
         return true;
     }

@@ -9,7 +9,7 @@ class Article
         if ($id) {
             $db = Database::getConnection();
 
-            $sql = 'SELECT articles.id, articles.title, articles.timestamp, articles.user_id, articles.content, users.login 
+            $sql = 'SELECT articles.id, articles.title, articles.timestamp, articles.user_id, articles.category_id, articles.content, users.login 
                     FROM articles INNER JOIN users ON articles.user_id = users.id WHERE articles.id= ?';
             $result = $db->prepare($sql);
             $result->bindParam(1, $id);
@@ -100,6 +100,21 @@ class Article
 
         $result = $db->prepare($sql);
         $result->bindParam(1, $id);
+
+        return $result->execute();
+    }
+
+    public static function editArticle($id, $title, $content, $categoryId) {
+
+        $db = Database::getConnection();
+
+        $sql = 'UPDATE articles SET title = ?, content = ?, category_id= ? WHERE id = ?';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(1, $title);
+        $result->bindParam(2, $content);
+        $result->bindParam(3, $categoryId);
+        $result->bindParam(4, $id);
 
         return $result->execute();
     }

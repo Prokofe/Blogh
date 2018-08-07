@@ -11,6 +11,7 @@ return array(
     'article/add' => 'articles/add',
     'articles/manage' => 'articles/manage',
     'articles/manage/delete/([0-9]+)' => 'articles/delete/$1',
+    'articles/manage/edit/([0-9]+)' => 'articles/edit/$1',
 
     //category routes
     'category/([0-9]+)' => 'category/category/$1',

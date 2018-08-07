@@ -1,28 +1,34 @@
-<?php include_once ROOT.'/views/layouts/header.php'; ?>
+<?php include_once ROOT . '/views/layouts/header.php'; ?>
 
-<div class="container">
-    <div class="content_sidebar">
-        <b><?php echo $article['title']; ?></b>
-        <hr>
-        <small>
-            - posted by: <b><?php echo $article['login']; ?></b>
-            on <?php echo date('Y-m-d', $article['timestamp']); ?>
-        </small>
-        <p>
-            <?php echo $article['content']; ?>
-        </p>
-        <br>
-        <a href="../">&larr; Back</a>
+<div class="row no-gutters">
+    <div class="col-sm-8">
+        <div class="content">
+            <b><?php echo $article['title']; ?></b>
+
+            <small>
+                - posted by: <u><?php echo $article['login']; ?></u>
+                on <?php echo date('Y-m-d', $article['timestamp']); ?>
+            </small>
+            <hr>
+            <p>
+                <?php echo $article['content']; ?>
+            </p>
+            <br>
+            <a href="../">&larr; Back</a>
+        </div>
     </div>
-    <div class="sidebar">
-        <b>Categories</b>
-        <hr>
-        <ul>
-            <?php foreach ($categories as $category) { ?>
-                <li><a href="../category/<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
-        </ul>
+    <div class="col-sm-4">
+        <div class="sidebar">
+            <b>Categories</b>
+            <hr>
+            <ul>
+                <?php foreach ($categories as $category) { ?>
+                    <li><a href="../category/<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
     </div>
 </div>
-</body>
-</html>
+
+<?php include_once ROOT.'/views/layouts/footer.php'; ?>
