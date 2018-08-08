@@ -6,24 +6,30 @@
                 <b>Add new article</b>
                 <hr>
                 <?php if ($result): ?>
-                    <p>Article edited successfully. </p>
+                    <div class="alert alert-primary" role="alert">Article edited successfully.</div>
                 <?php elseif (isset($error)): ?>
-                    <small><?= $error ?></small>
+                    <div class="alert alert-danger" role="alert"><?= $error ?></div>
                 <?php endif; ?>
                 <br>
                 <form action="" method="post">
-                    Title: <br>
-                    <input type="text" size="55" name="title" value="<?= $article['title'] ?>"/><br><br>
-                    Text: <br>
-                    <textarea rows="15" cols="42" name="content"><?= $article['content'] ?></textarea><br><br>
-                    Category: <br>
-                    <select name="category">
-                        <option></option>
-                        <?php foreach ($categories as $category) { ?>
-                            <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
-                        <?php } ?>
-                    </select><br><br>
-                    <input type="submit" name="submit" value="Edit article"/>
+                    <div class="form-group">
+                        <label>Article title</label>
+                        <input type="text" class="form-control" name="title" value="<?= $article['title'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control" name="content" rows="8"><?= $article['content'] ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" name="category">
+                            <option></option>
+                            <?php foreach ($categories as $category) { ?>
+                                <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-secondary">Edit article</button>
                 </form>
                 <br>
                 <a href="<?= INDEX ?> ">&larr; Back</a>

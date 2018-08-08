@@ -16,7 +16,7 @@ class CategoryController
             if ($category['id'] == $categoryId) {
                 $latestArticles = Article::getArticlesByCategory($categoryId);
 
-                require_once('./views/category/index.php');
+                require_once('./views/category/category.php');
                 return true;
             }
         }

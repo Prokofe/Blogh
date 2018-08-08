@@ -11,7 +11,7 @@ class ArticlesController
     {
         $articlesList = Article::getArticlesList();
 
-        require_once('./views/main/index.php');
+        require_once('./views/main.php');
 
         return true;
     }

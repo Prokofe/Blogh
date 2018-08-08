@@ -11,7 +11,7 @@ class MainController
 
         $latestArticles = Article::getLatestArticles();
 
-        require_once ('./views/index.php');
+        require_once ('./views/main.php');
         return true;
     }
 }
