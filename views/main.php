@@ -1,24 +1,28 @@
 <?php include_once ROOT.'/views/layouts/header.php'; ?>
 
     <div class="row no-gutters">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="content">
                 <b>Latest posts</b>
                 <hr>
                 <ol>
                     <?php foreach ($latestArticles as $article) { ?>
-                        <li><a href="article/<?php echo $article['id']; ?>">
+                        <li><a href="article/<?php echo $article['id']; ?>"> -
                                 <?php echo $article['title']; ?></a>
                             <small>
-                                - posted by: <b><?php echo $article['login']; ?></b>
+                                - posted by: <u><?php echo $article['login']; ?></u>
                                 on <?php echo date('Y-m-d', $article['timestamp']); ?>
                             </small>
                         </li>
                     <?php } ?>
                 </ol>
+                <br>
+                <nav>
+                    <?php echo $pagination->get(); ?>
+                </nav>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="sidebar">
                 <b>Categories</b>
                 <hr>

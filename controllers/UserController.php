@@ -58,4 +58,48 @@ class UserController
         unset($_SESSION['user']);
         header('Location: ' . INDEX);
     }
+
+    public function actionEdit($id)
+    {
+        if (User::isAdmin()) {
+
+            if ($id) {
+
+                $login = false;
+                $email = false;
+                $role = false;
+                $result = false;
+
+                $user = User::getUserById($id);
+
+                if (isset($_POST['submit'])) {
+                    $login = $_POST['login'];
+                    $email = $_POST['email'];
+                    $role = $_POST['role'];
+
+                    if (!empty($login) && !empty($email) && !empty($role)) {
+                        $result = User::editUser($id, $login, $email, $role);
+                    } else {
+                        $error = 'All fields must be filled';
+                    }
+                }
+
+            }
+            require_once(ROOT . '/views/admin/users/edit.php');
+        }
+        return true;
+    }
+
+    public function actionDeactivate($id)
+    {
+        if (User::isAdmin()) {
+
+            if ($id) {
+                $result = User::deactivateUSer($id);
+            }
+
+            header('Location: ' . INDEX . '/admin/users');
+        }
+        return true;
+    }
 }

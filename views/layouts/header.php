@@ -36,8 +36,8 @@
                     <br>
                     <a class="btn btn-outline-secondary btn-sm" href="<?= INDEX ?>/article/add" role="button">Add
                         article</a>
-                    <a class="btn btn-outline-secondary btn-sm" href="<?= INDEX ?>/articles/manage" role="button">Manage
-                        articles</a>
+                    <a class="btn btn-outline-secondary btn-sm" href="<?= INDEX ?>/admin/main" role="button">Manage
+                        blog</a>
                 <?php else: ?>
                     <small><a href="<?= INDEX ?>/logout">Logout<span class="badge">(<?= User::getUserName()['login'] ?>)</span></a></small>
                     <br>

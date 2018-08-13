@@ -31,7 +31,7 @@
                     <button type="submit" name="submit" class="btn btn-secondary">Add article</button>
                 </form>
                 <br>
-                <a href="<?= INDEX ?> ">&larr; Back</a>
+                <a href="javascript:history.back()">&larr; Back</a>
             </div>
         </div>
     </div>

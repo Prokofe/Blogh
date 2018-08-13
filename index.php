@@ -16,3 +16,4 @@ define ('ASSETS', 'http://localhost/BloghCMS/assets/'); //define relative path t
 
 $router = new Router();
 $router->run();
+

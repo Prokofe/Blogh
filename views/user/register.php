@@ -6,7 +6,7 @@
                 <b>New user registration</b>
                 <hr>
                 <?php if ($result): ?>
-                    <p>Successfully registered. </p>
+                    <div class="alert alert-primary" role="alert">Successfully registered.</div>
                 <?php else: ?>
                     <?php if (isset($errors) && is_array($errors)): ?>
                         <?php foreach ($errors as $error): ?>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="text" class="form-control" name="password" placeholder="**********">
+                            <input type="password" class="form-control" name="password" placeholder="**********">
                         </div>
                         <button type="submit" name="submit" class="btn btn-secondary">Register</button>
                     </form>

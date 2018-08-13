@@ -47,12 +47,20 @@
     font-size: 14px;
 }
 
+.content ol {
+    margin-left: 0;
+    padding-left: 10px;
+}
+
 .content ul {
+
+    list-style-type: none;
     margin-left: 0;
     padding-left: 0;
 }
 
 .content li {
+    list-style-type: none;
     padding-bottom: 7px;
     font-size: 17px;
 }
@@ -109,6 +117,8 @@
     color: #444;
     border-bottom-color: #444;
 }
+
+
 
 
 

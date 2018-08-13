@@ -1,8 +1,9 @@
 <?php
 
-include_once './models/Article.php';
-include_once './models/Category.php';
+include_once ROOT . '/models/Article.php';
+include_once ROOT . '/models/Category.php';
 include_once ROOT . '/models/User.php';
+include_once ROOT . '/models/Comment.php';
 
 class ArticlesController
 {
@@ -16,13 +17,18 @@ class ArticlesController
         return true;
     }
 
-    public function actionView($id)
+    public function actionView($id, $page = 1)
     {
         $categories = Category::getAllCategories();
+
+
 
         if ($id) {
 
             if ($article = Article::getArticleByID($id)) {
+
+                $comments = Comment::getCommentsByArticleId($id);
+
                 require_once('./views/article/article.php');
                 return true;
             }

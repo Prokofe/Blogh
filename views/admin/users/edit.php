@@ -3,32 +3,32 @@
     <div class="row no-gutters">
         <div class="col-sm-12">
             <div class="content">
-                <b>Edit article</b>
+                <b>Edit user</b>
                 <hr>
                 <?php if ($result): ?>
-                    <div class="alert alert-primary" role="alert">Article edited successfully.</div>
+                    <div class="alert alert-primary" role="alert">User edited successfully.</div>
                 <?php elseif (isset($error)): ?>
                     <div class="alert alert-danger" role="alert"><?= $error ?></div>
                 <?php endif; ?>
                 <form action="" method="post">
                     <div class="form-group">
-                        <label>Article title</label>
-                        <input type="text" class="form-control" name="title" value="<?= $article['title'] ?>">
+                        <label>Login</label>
+                        <input type="text" class="form-control" name="login" value="<?= $user['login'] ?>">
                     </div>
                     <div class="form-group">
-                        <label>Content</label>
-                        <textarea class="form-control" name="content" rows="8"><?= $article['content'] ?></textarea>
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="email" value="<?= $user['email'] ?>">
                     </div>
                     <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-control" name="category">
+                        <label>Role</label>
+                        <select class="form-control" name="role">
                             <option></option>
-                            <?php foreach ($categories as $category) { ?>
-                                <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
-                            <?php } ?>
+                                <option value="user">user</option>
+                                <option value="author">author</option>
+                                <option value="administrator">administrator</option>
                         </select>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-secondary">Edit article</button>
+                    <button type="submit" name="submit" class="btn btn-secondary">Edit user</button>
                 </form>
                 <br>
                 <a href="javascript:history.back()">&larr; Back</a>

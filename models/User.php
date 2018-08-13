@@ -160,21 +160,108 @@ class User
         return $result->fetch();
     }
 
-    public static function getUserName(){
+    public static function getUserName()
+    {
         $userId = self::checkLogged();
 
-        if($userId){
+        if ($userId) {
             $db = Database::getConnection();
 
             $sql = 'SELECT login FROM users WHERE id= ?';
 
             $result = $db->prepare($sql);
-            $result->bindParam(1,$userId);
+            $result->bindParam(1, $userId);
             $result->execute();
 
             return $result->fetch();
         }
 
+    }
+
+    public static function getAllUsers($page)
+    {
+        $limit = 20;
+        $offset = ($page - 1) * $limit;
+
+        $db = Database::getConnection();
+
+        $sql = 'SELECT id, login, email, active FROM users LIMIT :limit OFFSET :offset';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $result->execute();
+
+        return $result->fetchAll();
+    }
+
+    public static function getUsersTotalCount()
+    {
+        $db = Database::getConnection();
+
+        $sql = 'SELECT count(id) AS count FROM users';
+
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        $row = $result->fetch();
+        return $row['count'];
+    }
+
+    public static function editUser($id, $login, $email, $role)
+    {
+
+        $db = Database::getConnection();
+
+        $sql = 'UPDATE users SET login = :login, email = :email, role = :role WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id);
+        $result->bindParam(':login', $login);
+        $result->bindParam(':email', $email);
+        $result->bindParam(':role', $role);
+
+        return $result->execute();
+    }
+
+    public static function deleteUser($userId)
+    {
+
+        $db = Database::getConnection();
+
+        $sql = 'DELETE FROM users WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $userId);
+
+        return $result->execute();
+    }
+
+    public static function getRoles()
+    {
+        $db = Database::getConnection();
+
+        $sql = 'SHOW COLUMNS FROM users LIKE \'role\'';
+
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        return $result->fetch();
+    }
+
+    public static function deactivateUSer($userId)
+    {
+        $status = false;
+
+        $db = Database::getConnection();
+
+        $sql = 'UPDATE users SET active = :active WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':active',$status);
+        $result->bindParam(':id', $userId);
+
+        return $result->execute();
     }
 
 }
