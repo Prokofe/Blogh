@@ -1,8 +1,6 @@
 <?php
 
-include_once ROOT. '/models/Article.php';
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/components/Pagination.php';
+
 
 class MainController
 {
@@ -15,7 +13,7 @@ class MainController
         $total = Article::getAllArticleCount();
         $pagination = new Pagination($total, $page, 20, 'page-');
 
-        require_once ('./views/main.php');
+        require_once (ROOT . '/views/main.php');
         return true;
     }
 }

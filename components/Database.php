@@ -1,8 +1,17 @@
 <?php
 
+/**
+ * Class Database
+ * Component for work with DB
+ */
+
 Class Database
 {
 
+    /**
+     * Establish connection with DB
+     * @return PDO
+     */
     public static function getConnection()
     {
         $paramsPath = './config/db_config.php';

@@ -10,11 +10,6 @@
     font-size: 30px;
 }
 
-.menu {
-    text-align: right;
-    padding: 0 10px;
-}
-
 .logo a:link, a:visited {
     color: slategray;
     text-decoration: none;
@@ -24,6 +19,20 @@
 .logo a:hover {
     color: #444;
     border-bottom-color: #444;
+}
+
+.menu {
+    text-align: right;
+    padding: 0 10px;
+}
+
+.menu a:link, a:visited {
+    color: slategray;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #444;
 }
 
 .content {

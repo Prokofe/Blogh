@@ -5,6 +5,13 @@
 #RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^(.*)$ index.php
 
+<FilesMatch "\.(php)$">
+deny from all
+</FilesMatch>
+<Files index.php>
+allow from all
+</Files>
+
 Options -Indexes
 ErrorDocument 403 /BloghCMS/index.php
 RewriteEngine On

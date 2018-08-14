@@ -1,6 +1,5 @@
 <?php
 
-include_once ROOT . '/models/User.php';
 
 class UserController
 {
@@ -20,11 +19,11 @@ class UserController
 
             $errors = User::checkRegisterData($login, $email, $password);
             if (empty($errors)) {
-                $result = User::register($login, $email, md5($password));
+                $result = User::register($login, $email, password_hash($password, PASSWORD_DEFAULT));
             }
         }
 
-        require_once('./views/user/register.php');
+        require_once(ROOT . '/views/user/register.php');
         return true;
     }
 
@@ -38,7 +37,7 @@ class UserController
             $login = $_POST['login'];
             $password = $_POST['password'];
 
-            $userId = User::checkUserLoginData($login, md5($password));
+            $userId = User::checkUserLoginData($login, $password);
 
             if ($userId == false) {
                 $errors[] = 'Wrong login or password';

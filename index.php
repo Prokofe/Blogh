@@ -1,19 +1,24 @@
 <?php
 
+//set display_errors for debug
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+
+//start session for 1 time
 session_start();
 
-require_once ('components/Router.php');
-require_once ('components/Database.php');
 
-define('ROOT', dirname(__FILE__)); //defines absolute path to root folder
-define ('INDEX', 'http://localhost/BloghCMS'); //define relative path to root
-define ('TEMPL', 'http://localhost/BloghCMS/template/'); //define relative path to template folder
-define ('ASSETS', 'http://localhost/BloghCMS/assets/'); //define relative path to template folder
+//defines absolute path to root folder
+define('ROOT', dirname(__FILE__));
 
 
+//include autoloader and configs
+require_once (ROOT . '/config/app_config.php');
+require_once (ROOT . '/components/Autoloader.php');
+
+
+//start Router
 $router = new Router();
 $router->run();
 

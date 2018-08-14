@@ -1,12 +1,5 @@
 <?php
 
-include_once ROOT . '/models/User.php';
-include_once ROOT . '/models/Article.php';
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/Comment.php';
-include_once ROOT . '/components/Pagination.php';
-
-
 
 class AdminController
 {

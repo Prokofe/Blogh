@@ -85,18 +85,16 @@ class User
     {
         $db = Database::getConnection();
 
-        $sql = 'SELECT * FROM users WHERE login = ? AND password = ?';
+        $sql = 'SELECT * FROM users WHERE login = :login';
 
         $result = $db->prepare($sql);
-        $result->bindParam(1, $login);
-        $result->bindParam(2, $password);
+        $result->bindParam(':login', $login);
         $result->execute();
-
         $user = $result->fetch();
-        if ($user) {
+
+        if($user && password_verify($password, $user['password'])){
             return $user['id'];
         }
-
         return false;
     }
 
@@ -133,6 +131,18 @@ class User
         $user = User::getUserById($userId);
 
         if ($user['role'] == 'administrator') {
+            return true;
+        }
+        return false;
+    }
+
+    public static function isDeactivated()
+    {
+        $userId = User::checkLogged();
+
+        $user = User::getUserById($userId);
+
+        if ($user['active'] == 0) {
             return true;
         }
         return false;

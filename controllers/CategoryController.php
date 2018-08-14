@@ -1,9 +1,5 @@
 <?php
 
-include_once ROOT . '/models/Article.php';
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/User.php';
-include_once ROOT . '/components/Pagination.php';
 
 class CategoryController
 {
@@ -20,11 +16,11 @@ class CategoryController
                 $total = Article::getArticleCountByCategory($categoryId);
                 $pagination = new Pagination($total, $page, 15, 'page-');
 
-                require_once('./views/category/category.php');
+                require_once(ROOT . '/views/category/category.php');
                 return true;
             }
         }
-        require_once('./views/404.php');
+        require_once(ROOT . '/views/404.php');
     }
 
     public function actionEdit($id)

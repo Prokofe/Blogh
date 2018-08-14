@@ -1,8 +1,5 @@
 <?php
 
-include_once ROOT . '/models/User.php';
-include_once ROOT . '/models/Comment.php';
-
 
 class CommentController
 {

@@ -1,9 +1,5 @@
 <?php
 
-include_once ROOT . '/models/Article.php';
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/User.php';
-include_once ROOT . '/models/Comment.php';
 
 class ArticlesController
 {
@@ -12,7 +8,7 @@ class ArticlesController
     {
         $articlesList = Article::getArticlesList();
 
-        require_once('./views/main.php');
+        require_once(ROOT . '/views/main.php');
 
         return true;
     }
@@ -29,10 +25,10 @@ class ArticlesController
 
                 $comments = Comment::getCommentsByArticleId($id);
 
-                require_once('./views/article/article.php');
+                require_once(ROOT . '/views/article/article.php');
                 return true;
             }
-            require_once('./views/404.php');
+            require_once(ROOT . '/views/404.php');
         }
     }
 
