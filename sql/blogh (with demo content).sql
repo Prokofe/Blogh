@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2018 at 03:11 PM
+-- Generation Time: Aug 14, 2018 at 03:49 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -173,13 +173,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `email`, `role`, `active`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3 ', 'admin@admin', 'administrator', 1),
-(2, 'author', '02bd92faa38aaa6cc0ea75e59937a1ef', 'author@author', 'author', 1),
-(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user@user', 'user', 1),
-(5, 'newuser', '9dd9c2bc527cd3a8c9c7d535f99c2ec6', 'newuser@blog.com', 'user', 0),
-(6, 'author22', 'e5748d6358dadac96211bc7fe34bdce0', 'author22@blog.com', 'author', 1),
-(7, 'user22', '25d55ad283aa400af464c76d713c07ad', 'user22@blog.com', 'user', 1),
-(8, 'user33', '25d55ad283aa400af464c76d713c07ad', 'user33@blog.com', 'user', 1);
+(1, 'admin', '$2y$10$R9svivmWFIa4w32woILStupy0ZlYaTbLAQOATTtfbfQkMXNMRui7K', 'admin@admin', 'administrator', 1),
+(2, 'author', '$2y$10$7B13c5d9mqX5xL6VGclWye6108p5pDgCxROichbeYKRKRD635Wh4m', 'author@author', 'author', 1),
+(3, 'user', '$2y$10$i8TFy1zqZuhxJzAKepzme.7m.LSM9hFekcZzLpfJbv4CcpPapQE7O', 'user@user', 'user', 1),
+(5, 'newuser', '$2y$10$4htBRpZ2gECTp6KutaFHTOAFT8OnBdvwTrZ1shGpbEcJlIclHEYKm', 'newuser@blog.com', 'user', 0),
+(6, 'author22', '$2y$10$OiM1RqSGN3KWyGpcPRPcbu2VVRcbvWnpaHm/eqnrmLmL6jYIfjFEu', 'author22@blog.com', 'author', 1),
+(7, 'user22', '$2y$10$I82YtEXlpFLtqJDQLCMD0eFNyoqclk5K938UKZP5hGwH2jYoPwBCO', 'user22@blog.com', 'user', 1),
+(8, 'user33', '$2y$10$hVcLY1jBcsJplf1/GtqUReEg8v/ohLMvTIfSzwQNYEnV0XQ8/2ycK', 'user33@blog.com', 'user', 1),
+(9, 'new_user', '$2y$10$6otsPXzQ4pACOm9LYksm0OgpKe5QGtAUx9cX8mDrVefJ.zezjyZ3e', 'new_user@blog.com', 'user', 1);
 
 --
 -- Indexes for dumped tables
@@ -237,7 +238,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
