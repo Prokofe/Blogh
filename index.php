@@ -13,7 +13,7 @@ session_start();
 define('ROOT', dirname(__FILE__));
 
 
-//include autoloader and configs
+//include app config and autoloader
 require_once (ROOT . '/config/app_config.php');
 require_once (ROOT . '/components/Autoloader.php');
 

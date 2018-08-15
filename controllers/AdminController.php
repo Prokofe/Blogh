@@ -1,9 +1,15 @@
 <?php
 
-
+/**
+ * Class AdminController provide admin controllers
+ */
 class AdminController
 {
 
+    /**
+     * main page in admin category with statistics
+     * @return bool
+     */
     public function actionIndex()
     {
         if (User::isAdmin()) {
@@ -21,6 +27,11 @@ class AdminController
         return true;
     }
 
+    /**
+     * list of all articles with pagination
+     * @param int $page
+     * @return bool
+     */
     public function actionArticles($page = 1)
     {
 
@@ -36,6 +47,10 @@ class AdminController
         return true;
     }
 
+    /**
+     * list of categories
+     * @return bool
+     */
     public function actionCategories()
     {
 
@@ -49,6 +64,11 @@ class AdminController
         return true;
     }
 
+    /**
+     * list of all users with pagination
+     * @param int $page
+     * @return bool
+     */
     public function actionUsers($page = 1)
     {
 

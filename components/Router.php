@@ -72,7 +72,6 @@ class Router
     private function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI'])) {
-            //$subfolder = include_once (ROOT.'/config/route_path.php');
             $uri = preg_replace("/".FOLDER."/", "", $_SERVER['REQUEST_URI']);
             return trim($uri, '/');
         }

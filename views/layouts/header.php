@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Blogh</title>
+    <title><?= TITLE ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<?= ASSETS ?>favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
     <div class="row no-gutters header">
         <div class="col-sm-8">
             <div class="logo">
-                <a href="<?= INDEX ?>">Blogh</a>
+                <a href="<?= INDEX ?>"><?= TITLE ?></a>
             </div>
         </div>
         <div class="col-sm-4">

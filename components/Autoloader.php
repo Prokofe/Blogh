@@ -1,7 +1,12 @@
 <?php
 
+//register our autoloader as __autoload() implementation
 spl_autoload_register('autoloader');
 
+/**
+ * autoload classes or components if found
+ * @param $class_name
+ */
 function autoloader($class_name) {
 
     $array_paths = [
