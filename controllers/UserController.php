@@ -37,14 +37,19 @@ class UserController
             $login = $_POST['login'];
             $password = $_POST['password'];
 
-            $userId = User::checkUserLoginData($login, $password);
-
-            if ($userId == false) {
-                $errors[] = 'Wrong login or password';
+            if (!empty($login) && !empty($password)) {
+                $userId = User::checkUserLoginData($login, $password);
+                if ($userId == false) {
+                    $errors[] = 'Wrong login or password';
+                } else {
+                    $result = User::auth($userId);
+                    header('Location: ' . INDEX);
+                }
             } else {
-                $result = User::auth($userId);
-                header('Location: ' . INDEX);
+                $errors[] = 'Wrong login or password';
             }
+
+
         }
 
         require_once(ROOT . '/views/user/login.php');

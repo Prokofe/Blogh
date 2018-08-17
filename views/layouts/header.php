@@ -1,4 +1,3 @@
-<?php include_once(ROOT . '/models/user.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

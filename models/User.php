@@ -92,7 +92,7 @@ class User
         $result->execute();
         $user = $result->fetch();
 
-        if($user && password_verify($password, $user['password'])){
+        if ($user && password_verify($password, $user['password'])) {
             return $user['id'];
         }
         return false;
@@ -268,7 +268,7 @@ class User
         $sql = 'UPDATE users SET active = :active WHERE id = :id';
 
         $result = $db->prepare($sql);
-        $result->bindParam(':active',$status);
+        $result->bindParam(':active', $status);
         $result->bindParam(':id', $userId);
 
         return $result->execute();
